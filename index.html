@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+    <div id="form-channel" class="my-5">
+        <div class="container">
+            <div class="text-center logo">
+                <img src="https://weallnet.com/Theme/image/logo/logo-weallnet.svg" alt="" class="img-fuild">
+                <h2>CREATE CHANNEL</h2>
+            </div>
+            <div class="title">
+                <h2>Channel Informations</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="">Channel Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Channel Description</label>
+                        <textarea name="" id="textarea" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Link Channel</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <label for="">Channel Logo</label>
+                    <!-- <div class="text-center">
+                        <i class="fa fa-file-image text-center my-5"></i>
+                    </div> -->
+                    
+                    <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                        <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
+                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                        <div class="input-group-append">
+                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4">
+                            <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+                            <small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                        </div>
+                    </div>
+                    <p class="font-italic text-center select-text">Select a photo it here.</p>
+                    <div class="image-area mt-4">
+                        <img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                    </div>
+                </div>
+            <hr>
+            <div class="title">
+                <h2>Contacts Infomations</h2>
+            </div>
+            <div class="communications row">
+                <div class="basic col-md-6 col-12">
+                    <p>Basic Informations</p>
+                    <div class="form-group">
+                        <label for="">Phone</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Address</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="social col-md-6 col-12">
+                    <p>Social Network</p>
+                    <div class="form-group">
+                        <label for="">Facebook</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Youtube</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tiktok</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center my-5">
+                <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-create">Create Channel</button>
+                <div class="policy">
+                    <p>When create channel, I agreed to the</p>
+                    <a href="">Terms of Services </a><span>|</span><a href=""> Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="modal-box container">
+                        <div class="check container">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="modal-message container">
+                            <h1>THANK YOU!</h1>
+                            <p>your create was successful</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imageResult')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        }   
+
+        $(function () {
+            $('#upload').on('change', function () {
+                readURL(input);
+            });
+        });
+
+  
+        var input = document.getElementById( 'upload' );
+        var infoArea = document.getElementById( 'upload-label' );
+
+        input.addEventListener( 'change', showFileName );
+        function showFileName( event ) {
+            var input = event.srcElement;
+            var fileName = input.files[0].name;
+            infoArea.textContent = 'File name: ' + fileName;
+        }
+
+        
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+</body>
+</html>
